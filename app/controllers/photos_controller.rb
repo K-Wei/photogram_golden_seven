@@ -22,19 +22,9 @@ class PhotosController < ApplicationController
     redirect_to("http://localhost:3000/photos")
   end
 
-  def destroy
-    id = params[:id]
-    p = Photo.find(id)
-    p.destroy
-
-    # render("destroy.html.erb")
-    redirect_to("http://localhost:3000/photos")
-  end
-
   def edit_form
     @photo = Photo.find_by({ :id => params[:id]})
 
-    render("edit_form.html.erb")
   end
 
   def update_photo
@@ -44,5 +34,14 @@ class PhotosController < ApplicationController
     p.save
 
     redirect_to("http://localhost:3000/photos/#{p.id}")
+  end
+
+  def destroy
+    id = params[:id]
+    p = Photo.find(id)
+    p.destroy
+
+    # render("destroy.html.erb")
+    redirect_to("http://localhost:3000/photos")
   end
 end
